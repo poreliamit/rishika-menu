@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF4E6">
+<title>Rishika's Birthday Menu</title>
+<meta name="description" content="The dinner menu for Rishika's 6th birthday, 14 November 2026.">
+<link rel="preload" href="fonts/dmserif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/greatvibes.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/rishika-1.webp" as="image">
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+<div class="thread" aria-hidden="true"><i></i></div>
+<header class="topbar" aria-hidden="true"><span class="chip" id="chip">Starters</span><span class="count" id="count"></span></header>
+
+<main class="reel" id="reel">
+  <section class="screen intro" id="intro" aria-label="Welcome">
+    <div class="balloons" id="balloons" aria-hidden="true"></div>
+    <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+    <svg class="fish l" viewBox="-2 -16 64 32" aria-hidden="true"></svg>
+    <svg class="fish r" viewBox="-2 -16 64 32" aria-hidden="true"></svg>
+
+    <button class="medal" id="medal" type="button" aria-label="Show the next photo of Rishika"></button>
+    <div class="dots" id="dots" aria-hidden="true"></div>
+
+    <h1>
+      <span class="t1 fade" style="--d:.45s">Rishika's</span>
+      <span class="t2 fade" style="--d:.6s">6th Birthday Dinner</span>
+    </h1>
+    <div class="info fade" style="--d:.75s">
+      <span><svg viewBox="0 0 20 20"><rect x="2" y="4" width="16" height="14" rx="2" fill="none" stroke="#B3123E" stroke-width="1.8"/><line x1="2" y1="8.5" x2="18" y2="8.5" stroke="#B3123E" stroke-width="1.8"/><line x1="6.5" y1="1.5" x2="6.5" y2="5.5" stroke="#B3123E" stroke-width="1.8" stroke-linecap="round"/><line x1="13.5" y1="1.5" x2="13.5" y2="5.5" stroke="#B3123E" stroke-width="1.8" stroke-linecap="round"/></svg>Saturday, 14 November 2026</span>
+      <span><svg viewBox="0 0 20 20"><path d="M10 19C7.5 15 3 11.5 3 7.8A7 7 0 1 1 17 7.8C17 11.5 12.5 15 10 19Z" fill="none" stroke="#B3123E" stroke-width="1.8"/><circle cx="10" cy="7.8" r="2.6" fill="#B3123E"/></svg>Chandimata Marriage Hall, Deora</span>
+    </div>
+    <button class="cta fade" style="--d:.9s" id="cta" type="button">See the Menu
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="hint fade" style="--d:1.1s">Tap her photo or pop a balloon!</p>
+  </section>
+  <!-- chapter, dish and thank-you pages are built by app.js -->
+</main>
+
+<button class="list-btn" id="listBtn" type="button">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="4" cy="6" r="1.5" fill="#fff"/><circle cx="4" cy="12" r="1.5" fill="#fff"/><circle cx="4" cy="18" r="1.5" fill="#fff"/></svg>
+  Full menu
+</button>
+
+<div class="sheet-wrap" id="listSheet" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-label="Full menu">
+    <div class="grab"></div>
+    <button class="close" type="button" data-close aria-label="Close">✕</button>
+    <h2>Menu</h2>
+    <div id="listBody"></div>
+  </div>
+</div>
+
+<div class="sheet-wrap" id="creditSheet" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-label="Photo credits">
+    <div class="grab"></div>
+    <button class="close" type="button" data-close aria-label="Close">✕</button>
+    <h2>Photo credits</h2>
+    <div id="creditBody"></div>
+  </div>
+</div>
+
+<script src="credits.js?v=2"></script>
+<script src="app.js?v=2"></script>
+</body>
+</html>
