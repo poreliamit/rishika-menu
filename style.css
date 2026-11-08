@@ -206,7 +206,6 @@ body.in-menu .list-btn { transform: translate(-50%, 0); }
 .end .again { margin-top: 22px; font-weight: 600; font-size: 15px; color: var(--pink-txt); display: inline-flex; gap: 6px; align-items: center; opacity: 0; }
 .end.is-active .again { animation: rise .5s var(--ease-out) .4s forwards; }
 .end .again svg { width: 18px; height: 18px; transform: rotate(180deg); }
-.credits-btn { margin-top: 14px; font-size: 12.5px; color: rgba(43, 26, 23, .62); text-decoration: underline dotted; }
 
 /* ------------------------------------------------------------ bottom sheets */
 .sheet-wrap { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
@@ -227,9 +226,6 @@ body.in-menu .list-btn { transform: translate(-50%, 0); }
 .sheet .item .arrow { margin-left: auto; color: var(--teal-txt); font-size: 18px; }
 .sheet .close { position: absolute; top: 14px; right: 16px; width: 36px; height: 36px; border-radius: 50%;
   display: grid; place-items: center; color: var(--ink); background: rgba(43, 26, 23, .06); font-size: 18px; }
-.sheet .credit { font-size: 13px; line-height: 1.45; padding: 8px 0; border-bottom: 1px dashed rgba(43, 26, 23, .14); }
-.sheet .credit b { font-weight: 600; }
-.sheet .credit a { color: var(--teal-txt); word-break: break-all; }
 
 /* short phones (iPhone SE and similar): tighter dish pages */
 @media (max-height: 640px) {

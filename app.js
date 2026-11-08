@@ -293,7 +293,7 @@
       '<span><svg viewBox="0 0 20 20"><path d="M10 19C7.5 15 3 11.5 3 7.8A7 7 0 1 1 17 7.8C17 11.5 12.5 15 10 19Z" fill="none" stroke="' + C.indigo + '" stroke-width="1.8"/><circle cx="10" cy="7.8" r="2.6" fill="' + C.indigo + '"/></svg>' + CATERER.addr + "</span>" +
       "</div></div>" +
       '<button class="again" type="button" id="again"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7" fill="none" stroke="#C2306A" stroke-width="2.2" stroke-linecap="round"/></svg>Back to the start</button>' +
-      '<button class="credits-btn" type="button" id="creditsBtn">Photo credits</button>' + driftBits(9);
+      driftBits(9);
     return el;
   }
 
@@ -316,7 +316,6 @@
     reel.appendChild(ep);
     pages.push({ el: ep, type: "end" });
     buildList();
-    buildCredits();
   }
 
   function buildList() {
@@ -332,33 +331,6 @@
     });
     document.getElementById("listBody").innerHTML = body;
   }
-
-  /* credits come from third-party metadata: build with DOM text nodes, never innerHTML */
-  function buildCredits() {
-    var box = document.getElementById("creditBody");
-    (window.CREDITS || []).forEach(function (c) {
-      var d = document.createElement("div");
-      d.className = "credit";
-      var b = document.createElement("b");
-      b.textContent = c.name;
-      d.appendChild(b);
-      d.appendChild(document.createTextNode(": " + [c.title, c.creator].filter(Boolean).join(", ") + " "));
-      if (c.license) {
-        var ok = safeUrl(c.license_url), lic = document.createElement(ok ? "a" : "span");
-        lic.textContent = "(" + c.license + ")";
-        if (ok) { lic.href = c.license_url; lic.target = "_blank"; lic.rel = "noopener"; }
-        d.appendChild(lic);
-      }
-      if (safeUrl(c.source_url)) {
-        d.appendChild(document.createElement("br"));
-        var a = document.createElement("a");
-        a.href = c.source_url; a.target = "_blank"; a.rel = "noopener"; a.textContent = c.source_url;
-        d.appendChild(a);
-      }
-      box.appendChild(d);
-    });
-  }
-  function safeUrl(u) { return typeof u === "string" && /^https:\/\//.test(u); }
 
   /* ------------------------------------------------------------ behaviour */
   var reel, active = -1, comboTimer = null, greeted = false;
@@ -434,15 +406,14 @@
       if (i >= 0) setTimeout(function () { goTo(i, false); }, 200);
     });
     document.getElementById("again").addEventListener("click", function () { goTo(0); });
-    document.getElementById("creditsBtn").addEventListener("click", function () { sheet("creditSheet", true); });
     document.querySelectorAll("[data-close]").forEach(function (b) {
-      b.addEventListener("click", function () { sheet("listSheet", false); sheet("creditSheet", false); });
+      b.addEventListener("click", function () { sheet("listSheet", false); });
     });
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) { stopBalloons(); stopPics(); } else if (active === 0) { startBalloons(); startPics(); }
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") { sheet("listSheet", false); sheet("creditSheet", false); }
+      if (e.key === "Escape") sheet("listSheet", false);
       if (e.key === "ArrowDown" || e.key === "PageDown") { e.preventDefault(); goTo(Math.min(active + 1, pages.length - 1)); }
       if (e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); goTo(Math.max(active - 1, 0)); }
     });
